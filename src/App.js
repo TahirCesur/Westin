@@ -13,21 +13,21 @@ import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
 
 function App() {
-  return (
-    <div>
-      <Preloader />
-      <Header />
-      <Banner />
-      <About />
-      <SectionTitle />
-      <Services />
-      <Portfolio />
-      <Testimonial />
-      <Blog />
-      <Contact />
-      <Footer />
-    </div>
-  );
+    return (
+        <div>
+            <Preloader/>
+            <Header/>
+            <Banner/>
+            <About/>
+            <SectionTitle/>
+            <Services/>
+            <Portfolio/>
+            <Testimonial/>
+            <Blog/>
+            <Contact/>
+            <Footer/>
+        </div>
+    );
 }
 
 export default App;
