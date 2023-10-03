@@ -1,33 +1,34 @@
-import React from "react";
-import Preloader from "./Components/Preloader";
-import Header from "./Components/Header";
-import Banner from "./Components/Banner";
-import About from "./Components/About";
-import SectionTitle from "./Components/SectionTitle";
-import Service from "./Components/Service";
-import Services from "./Components/Sevices";
-import Portfolio from "./Components/Portfolio";
-import Testimonial from "./Components/Testimonial";
-import Blog from "./Components/Blog";
-import Contact from "./Components/Contact";
-import Footer from "./Components/Footer";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from "react";
+import { BrowserRouter } from "react-router-dom";
+import Footer from "./Components/common/Footer";
+import Header from "./Components/common/Header";
+import CustomRoutes from "./router/CustomRoutes";
+import { useTranslation } from "react-i18next";
 
 function App() {
-    return (
-        <div>
-            <Preloader/>
-            <Header/>
-            <Banner/>
-            <About/>
-            <SectionTitle/>
-            <Services/>
-            <Portfolio/>
-            <Testimonial/>
-            <Blog/>
-            <Contact/>
-            <Footer/>
-        </div>
-    );
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const userLanguage = navigator.language || navigator.userLanguage;
+    if (userLanguage.includes("tr")) {
+      i18n.changeLanguage("tr"); // Tarayıcı dilini Türkçe olarak algıladığında dil ayarınızı güncelleyin
+    }
+  }, []);
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
+  return (
+    <>
+      <BrowserRouter>
+        <Header changeLanguage={changeLanguage} />
+        <CustomRoutes changeLanguage={changeLanguage} />
+        <Footer changeLanguage={changeLanguage} />
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default App;
